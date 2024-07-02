@@ -1,4 +1,5 @@
 import React from 'react'
+import { Pagina2 } from '@/Componentes/Pagina2'
 
 export const Pagina1 = () => {
   return (
