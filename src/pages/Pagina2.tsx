@@ -17,6 +17,28 @@ export const Pagina2 = () => {
     setNombre(valor)
   }
 
+// hook de useSate para los numeros
+  const [primerNumero, setPrimerNumero] = useState(0)
+  const [segundoNumero, setSegundoNumero] = useState(0)
+  const [resultado, setResultado] = useState(0)
+
+// funciones de calculadora
+  const sumar = () => {
+    setResultado(primerNumero + segundoNumero)
+  }
+
+  const restar = () => {
+    setResultado(primerNumero - segundoNumero)
+  }
+
+  const multiplicar = () => {
+    setResultado(primerNumero * segundoNumero)
+  }
+
+  const dividir = () => {
+    setResultado(primerNumero / segundoNumero)
+  }
+
 
   return (
     <>
@@ -50,6 +72,7 @@ export const Pagina2 = () => {
             <Form.Control
                 type='number'
                 placeholder='Ingrese un número'
+                onChange={(e) => setPrimerNumero(Number(e.currentTarget.value))}
             />
         </Form.Group>
         <Form.Group>
@@ -57,15 +80,20 @@ export const Pagina2 = () => {
             <Form.Control
                 type='number'
                 placeholder='Ingrese otro número'
+                onChange={(e) => setSegundoNumero(Number(e.currentTarget.value))}
             />
         </Form.Group>
         <Form.Group>
             <Form.Label>Resultado:</Form.Label>
             <Form.Control
                 type='number'
+                value={resultado}
             />
         </Form.Group>
-        <Button type='button' variant='success'>Registrar</Button>
+        <Button type='button' variant='success' onClick={sumar}>Sumar</Button>
+        <Button type='button' variant='success' onClick={restar}>Restar</Button>
+        <Button type='button' variant='success' onClick={multiplicar}>Multiplicar</Button>
+        <Button type='button' variant='success' onClick={dividir}>Dividir</Button>
     </Form>
     </>
   )
