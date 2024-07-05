@@ -1,44 +1,39 @@
+import { initialStatePersona } from '@/EstadosIniciales/Persona';
+import { registrarPersona } from '@/Firebase/Promesas';
+import { Persona } from '@/Interfaces/interfaces';
 import React, { useState } from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+//aquí antes estaba la interfaz pero se movio y ahora se IMPORTO
 
-//Definir tipo de dato
-//Si se coloca "?" significa que es opcional
-interface Persona{
-    nombre:string,
-    apellido:string,
-    rut:string,
-    fechaNacimiento:string,
-    edad:number,
-    correo:string
-}
-
-//Definir dato con el que inician las variables
-const initialState:Persona = {
-    nombre:"",
-    apellido:"",
-    correo:"",
-    edad:0,
-    rut:"",
-    fechaNacimiento:""
-}
+//aquí antes estaba el initialState pero se movio y ahora se IMPORTO
 
 export const Pagina3 = () => {
 
     //hook de useState
-    const [persona, setPersona] = useState<Persona>(initialState)
+    const [persona, setPersona] = useState<Persona>(initialStatePersona)
 
     //interactua con el (e)onChange y el useState
-    const handlePersona = (name:string, value:string) =>{
-        
+
     // "..." ¿cuál es el input que modificaste? 
     // [name] buscar la clave
     // "value" es lo ingresado por el usuario
     //recupera los valores actuales y luego identifica cuál se quiere modificar
     //"desarma" el diccionario para recuperar individual
+    const handlePersona = (name:string, value:string) =>{
         setPersona({...persona, [name]:value})
     }
+
+    const handleRegistrar = () =>{
+        registrarPersona(persona).then(()=>{
+            alert("Registrado con exito!")
+        }).catch((e)=>{
+            alert("Algo ocurrio")
+            console.log(e)
+        })
+    }
+
 
     //el "name" debe coincidir con el que se utilizo arriba.
     //se usa el onChange para recuperar el valor y pasarselo a la funcion de handlePersona
@@ -87,7 +82,8 @@ export const Pagina3 = () => {
                 <Form.Text></Form.Text>
             </Form.Group>
 
-            <Button type='button' variant='primary'>Registrar</Button>
+            <Button type='button' variant='primary'
+            onClick={handleRegistrar}>Registrar</Button>
         </Form>
     </>
   )
