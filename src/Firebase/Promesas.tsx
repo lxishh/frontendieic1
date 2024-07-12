@@ -1,5 +1,5 @@
 import { Persona } from "@/Interfaces/interfaces";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { addDoc, collection, getDocs, doc, getDoc, updateDoc } from "firebase/firestore";
 import { db } from "./Firebase";
 
 //se deben exportar
@@ -20,9 +20,45 @@ export const obtenerPersonas = async() =>{
             correo:doc.data().correo,
             edad:doc.data().edad,
             rut:doc.data().rut,
-            fechaNacimiento:doc.data().fechaNacimiento
+            fechaNacimiento:doc.data().fechaNacimiento,
+            key:doc.id
         }
         personas.push(persona)
 });
 return personas
+}
+
+export const obtenerPersona = async(key:string)=>{
+    const docRef = doc(db, "persona", key);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+        let persona:Persona = {
+            apellido:docSnap.data().apellido,
+            nombre:docSnap.data().nombre,
+            correo:docSnap.data().correo,
+            edad:docSnap.data().edad,
+            rut:docSnap.data().rut,
+            fechaNacimiento:docSnap.data().fechaNacimiento,
+            key:docSnap.id
+        }
+        return persona
+      } else {
+        return undefined
+      }
+}
+
+export const modificarPersona = async(persona:Persona)=>{
+    const ref = doc(collection(db,"persona"),persona.key)
+    // con key incluida
+    // await updateDoc(ref,{...persona})
+    // sin key
+    await updateDoc(ref,{
+        nombre:persona.nombre,
+        apellido:persona.apellido,
+        rut:persona.rut,
+        edad:persona.edad,
+        fechaNacimiento:persona.fechaNacimiento,
+        correo:persona.correo
+    })
 }

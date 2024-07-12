@@ -8,5 +8,6 @@ export interface Persona{
     rut:string,
     fechaNacimiento:string,
     edad:number,
-    correo:string
+    correo:string,
+    key?:string
 }
