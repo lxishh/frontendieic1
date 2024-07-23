@@ -4,6 +4,9 @@ import { Persona } from "@/Interfaces/interfaces";
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 //aquí antes estaba la interfaz pero se movio y ahora se IMPORTO
 
@@ -39,89 +42,96 @@ export const Pagina3 = () => {
   //se usa el onChange para recuperar el valor y pasarselo a la funcion de handlePersona
   return (
     <>
-      <Form>
-        <Form.Group>
-          <Form.Label>Nombre:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Ingrese nombre"
-            name="nombre"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+      <Container>
+        <Row>
+          <Col>
+            <h2>Iniciar sesion</h2>
+            <Form>
+              <Form.Group>
+                <Form.Label>Nombre:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese nombre"
+                  name="nombre"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Apellido:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Ingrese apellido"
-            name="apellido"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Apellido:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese apellido"
+                  name="apellido"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Rut:</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Ingrese rut"
-            name="rut"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Rut:</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Ingrese rut"
+                  name="rut"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Correo:</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Ingrese correo"
-            name="correo"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Correo:</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Ingrese correo"
+                  name="correo"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Fecha Nacimiento:</Form.Label>
-          <Form.Control
-            type="date"
-            placeholder="Ingrese fecha nacimiento"
-            name="fechaNacimiento"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Fecha Nacimiento:</Form.Label>
+                <Form.Control
+                  type="date"
+                  placeholder="Ingrese fecha nacimiento"
+                  name="fechaNacimiento"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Form.Group>
-          <Form.Label>Edad:</Form.Label>
-          <Form.Control
-            type="number"
-            placeholder="Ingrese edad"
-            name="edad"
-            onChange={(e) => {
-              handlePersona(e.currentTarget.name, e.currentTarget.value);
-            }}
-          />
-          <Form.Text></Form.Text>
-        </Form.Group>
+              <Form.Group>
+                <Form.Label>Edad:</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="Ingrese edad"
+                  name="edad"
+                  onChange={(e) => {
+                    handlePersona(e.currentTarget.name, e.currentTarget.value);
+                  }}
+                />
+                <Form.Text></Form.Text>
+              </Form.Group>
 
-        <Button type="button" variant="primary" onClick={handleRegistrar}>
-          Registrar
-        </Button>
-      </Form>
+              <Button type="button" variant="primary" onClick={handleRegistrar}>
+                Registrar
+              </Button>
+            </Form>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
